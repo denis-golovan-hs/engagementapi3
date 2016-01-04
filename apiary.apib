@@ -27,8 +27,8 @@ SCUM Facade API V3
 + profileId: 420swed (string, optional) - ID of the profile who authored this comment. [All]
 
 ## ProfileSummary (object)
-+ sourceNetwork (enum[string], required)
-+ profileId (string, optional)
++ sourceNetwork: Twitter (enum[string], required)
++ profileId: 1234abc (string, optional)
 + name (string, optional)
 + avatarUrl (string, required)
 
@@ -148,13 +148,15 @@ SCUM Facade API V3
         + `LinkedIn`
         + `GooglePlus`
 + message (Message, optional) - Message of the post. [FB, G+, LI, IG, TW]
-+ createdDate: 2015-09-04T14:26:16.000Z (string, optional) - ISO date of when the post was created. [All]
 + inReplyTo (InReplyTo, optional) - Information about the post this is replying to. [TW]
 + media (Media, optional) - Media contained within this post. [FB, G+, LI, IG, TW, YT]
++ statistics (Statistics, optional) - Information about likes, shares, views, etc. for this post. [All]
++ author (ProfileSummary, required)
 + location (Location, optional) - Location metadata about the post. [FB, TW, YT]
 + privacy (Privacy, optional) - Privacy information about the post. [FB, LI, TW, YT]
 + targeting (Targeting, optional) - Advertising targeting information about the post. [FB, LI, TW]
-+ statistics (Statistics, optional) - Information about likes, shares, views, etc. for this post. [All]
+
++ createdDate: 2015-09-04T14:26:16.000Z (string, optional) - ISO date of when the post was created. [All]
 
 ## Paging (object)
 
