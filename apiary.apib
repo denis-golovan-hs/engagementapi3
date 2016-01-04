@@ -1,0 +1,194 @@
+FORMAT: 1A
+HOST: https://api.hootsuite.com/api/3
+
+# Engagement API V3
+
+SCUM Facade API V3
+
+# Data Structures
+
+## Message (object)
+
++ title: Message Title (string, optional) - Title of the message. [All]
++ body: Message body goes here. (string, required) - Body of the message. [All]
+
+## Image (object)
+
++ url: http://url.to.image/image.jpg (string, required) - URL to this image. [All]
+
+## CommentMedia (object)
+
++ images (array[Image], optional) - Images for this comment. [FB]
+
+## Author (object)
+
++ name: Snoop Lion (string, optional) - Name of the profile who authored this comment. [All]
++ avatarUrl: http://snoopdog.com/snoop.jpg (string, optional) - Avatar URL of the profile who authored this comment. [All]
++ profileId: 420swed (string, optional) - ID of the profile who authored this comment. [All]
+
+## FacebookCommentPrivacy (object)
+
++ isHidden: false (boolean, optional) - If the comment is hidden. [FB]
+
+## CommentPrivacy (object)
+
++ facebook (FacebookCommentPrivacy, optional) - Facebook comment privacy settings. [FB]
+
+## Comment (object)
+
++ id: jksdfZJfiewrfVCW== (string, required) - ID of this comment. [All]
++ createdDate: `2015-09-04T14:26:16.000Z` (string, optional) - ISO formatted DateTime that this comment was created. [All]
++ parentObjectId: iwnASDfinz (string, required) - Object ID of the parent of this comment. [All]
++ parentObjectType: channel (string, required) - Object type of the parent of this comment. [All]
++ message (Message, optional) - The message this comment contains. [All]
++ media (CommentMedia, optional) - Any media contained within this comment. [All]
++ author (Author, optional) - The author of this comment. [All]
++ privacy (CommentPrivacy, optional) - The privacy settings of this comment. [FB]
++ likeCount: 20 (number, optional) - The number of likes this comment received. [FB, YT]
++ replyCount: 5 (number, optional) - The number of replies this comment has. [FB, YT]
+
+## TwitterInReplyTo (object)
+
++ tweetId: abc12345 (string, required) - Tweet ID of the message being replied to. [TW]
+
+## InReplyTo (object)
+
++ twitter (TwitterInReplyTo, optional) - ReplyTo information for Twitter. [TW]
+
+## Link (object)
+
++ url: http://link.test (string, required) - URL that the link is pointing to. [All]
++ title: My link name (string, optional) - Display text for the link. [FB, G+, LI]
++ description: My link description (string, optional) - Description of the link. [LI]
++ previewImageUrl: http://preview.fake/preview.jpg (string, optional) - URL of image preview. [FB, G+, LI]
++ includeImagePreview: true (boolean, optional) - Whether to show the preview image. [FB, G+, LI]
+
+## Video (object)
+
++ embedUrl: www.youtube.com/embed/ASDfjkzf (string, optional) - URL to an embeddable video. [YT]
+
+## Media (object)
+
++ links (array[Link], optional) - Any links in the post. [FB, G+, LI, IG]
++ images (array[Image], optional) - Any images in the post. [FB, G+, LI, IG, TW]
++ videos (array[Video], optional) - Any videos in the post. [YT]
+
+## Position (object)
+
++ latitude: 20.123 (number, required) - Latitude of this position. [TW, YT]
++ longitude: 40.123 (number, required) - Longitude of this position. [TW, YT]
+
+## FacebookPlace (object)
+
++ pageId: asdfzv (string, required) - Page ID associated with this place. [FB]
+
+## Place (object)
+
++ facebook (FacebookPlace, optional) - Facebook place information. [FB]
+
+## Location (object)
+
++ position (Position, optional) - Position metadata. [TW, YT]
++ place (Place, optional) - Place metadata. [FB]
+
+## TwitterPrivacy (object)
+
+## FacebookPrivacy (object)
+
+## LinkedInPrivacy (object)
+
+## YouTubePrivacySetting
+
+## YouTubePrivacy (object)
+
++ privacy: Unlisted (string, optional) - YouTube privacy setting. Must be one of "Private", "Unlisted" or "Public". [YT] 
+
+## Privacy (object)
+
++ twitter: null (TwitterPrivacy, optional) - Twitter privacy settings. [TW]
++ facebook: null (FacebookPrivacy, optional) - Facebook privacy settings. [FB]
++ linkedIn: null (LinkedInPrivacy, optional) - LinkedIn privacy settings. [LI]
+
+## TwitterTargeting
+
+## LinkedInTargeting
+
+## FacebookTargeting
+
+## Targeting (object)
+
++ twitter: null (TwitterTargeting, optional) - Twitter targeting information. [TW]
++ facebook: null (FacebookTargeting, optional) - Facebook targeting information. [FB]
++ linkedIn: null (LinkedInTargeting, optional) - LinkedIn targeting information. [LI]
+
+## Statistics (object)
+
++ likes: 100 (number, optional) - The number of likes this object has received. [FB, G+, LI, IG, YT]
++ dislikes: 5 (number, optional) - The number of dislikes this object has received. [YT]
++ replies: 200 (number, optional) - The number of replies or comments this object has received. [FB, G+, LI, IG, TW, YT]
++ favorites: 300 (number, optional) - The number of favorites this object has received. [YT, TW]
++ shares: 1000 (number, optional) - The number of shares this object has received. [FB] 
++ views: 123456789 (number, optional) - The number of views this object has received. [YT] 
+
+## Post (object)
+
++ id: zxcv1234 (string, required) - ID of the post of the social network. [All]
++ source (enum[string], required) - Type of the message [All]
+    + Members
+        + `Twitter`
+        + `Facebook`
+        + `Instagram`
+        + `YouTube`
+        + `LinkedIn`
+        + `GooglePlus`
++ message (Message, optional) - Message of the post. [FB, G+, LI, IG, TW]
++ createdDate: 2015-09-04T14:26:16.000Z (string, optional) - ISO date of when the post was created. [All]
++ inReplyTo (InReplyTo, optional) - Information about the post this is replying to. [TW]
++ media (Media, optional) - Media contained within this post. [FB, G+, LI, IG, TW, YT]
++ location (Location, optional) - Location metadata about the post. [FB, TW, YT]
++ privacy (Privacy, optional) - Privacy information about the post. [FB, LI, TW, YT]
++ targeting (Targeting, optional) - Advertising targeting information about the post. [FB, LI, TW]
++ statistics (Statistics, optional) - Information about likes, shares, views, etc. for this post. [All]
+
+## Paging (object)
+
++ nextPageToken: akjvzSDFijwefADSC== (string, required) - Token used to retrieve the next page.
++ previousPageToken: WIDJFjkafF== (string, optional) - Token used to retrieve the previous page, if available.
+
+## Playlist (object)
+
++ id: poinWEFv123n== (string, required) - ID of the playlist on the social network. [YT]
++ title: Cat videos (string, optional) - Title of the playlist. [YT]
++ createdAt: 2015-09-04T14:26:16.000Z (string, optional) - ISO-formatted date time of when the playlist was created. [YT]
++ channelId: nerAKSNdf541== (string, optional) - Channel to which this playlist belongs. [YT]
++ description: A collection of the best cat videos in the world. (string, optional) - Description of the playlist. [YT]
++ tags (array[string], optional) - Collection of tags for the playlist. [YT]
++ privacy (Privacy, optional) - Playlist privacy settings. [YT]
++ count: 10 (number, optional) - Number of items in the playlist. [YT]
++ embedHtml: http://www.youtube.com/p/kjasdfvzxcv/ (string, optional) - HTML to be used for embedding the playlist. [YT]
+
+## Results (object)
++ posts (array[Post], required) - Array of posts matching the stream type.
++ paging (Paging, optional) - Paging information that can be used in subsequent requests.
+
+## Error (object)
+
+
+
+## Posts Collection [/posts]
+
+### Get posts [GET /posts/{socialProfileId}{?type}{?pageSize}{?pageToken}]
++ Parameters
+    + socialProfileId (string, required) - Social profile ID of the user performing this search. [All]
+    + type (string, required) - Type of posts to be collected and returned. Valid values are:
+    
+        * Y_MY_CHANNEL - Posts from My Channel. [YT]
+        
+    + pageSize (number, required) - number of posts per page
+    + pageToken (string, required) - Page token
+        
++ Response 200 (application/json)
+    + Attributes
+        + request: /api/3/posts/150332989?type=Y_MY_CHANNEL
+        + results (Results, required) - Result object
+        + error (Error, required) - Error object
