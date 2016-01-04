@@ -53,6 +53,10 @@ SCUM Facade API V3
 + likeCount: 20 (number, optional) - The number of likes this comment received. [FB, YT]
 + replyCount: 5 (number, optional) - The number of replies this comment has. [FB, YT]
 
+## CommentList (object)
++ comments (array[Comment], required) - actual comments
++ pagingResponse (PagingResponse, required) - paging
+
 ## TwitterInReplyTo (object)
 
 + tweetId: abc12345 (string, required) - Tweet ID of the message being replied to. [TW]
@@ -136,29 +140,32 @@ SCUM Facade API V3
 + shares: 1000 (number, optional) - The number of shares this object has received. [FB] 
 + views: 123456789 (number, optional) - The number of views this object has received. [YT] 
 
+## YouTubePostStatus (object)
++ videoStatus (enum[string], optional) - ['Deleted' or 'Failed' or 'Processed' or 'Rejected' or 'Uploaded']: Status of the YouTube video, as reported by their API.
++ statusDescription (string, optional) - Further details about the video status. This should be populated for statuses of 'Failed' or 'Rejected'.
+
+## Tag (object)
++ sourceNetwork (enum[string], required) - ['Twitter', 'Facebook', ...]
++ name (string, required) - actual tag
+
 ## Post (object)
 
 + id: zxcv1234 (string, required) - ID of the post of the social network. [All]
-+ source (enum[string], required) - Type of the message [All]
-    + Members
-        + `Twitter`
-        + `Facebook`
-        + `Instagram`
-        + `YouTube`
-        + `LinkedIn`
-        + `GooglePlus`
++ source: YouTube (enum[string], required) - Type of the message [All]
 + message (Message, optional) - Message of the post. [FB, G+, LI, IG, TW]
 + inReplyTo (InReplyTo, optional) - Information about the post this is replying to. [TW]
 + media (Media, optional) - Media contained within this post. [FB, G+, LI, IG, TW, YT]
 + statistics (Statistics, optional) - Information about likes, shares, views, etc. for this post. [All]
 + author (ProfileSummary, required)
 + location (Location, optional) - Location metadata about the post. [FB, TW, YT]
++ status (YouTubePostStatus, optional) - Status of the post [YT]
++ tags (array[Tag], optional) - Post tags
++ commentList (CommentList, optional) - Comments
 + privacy (Privacy, optional) - Privacy information about the post. [FB, LI, TW, YT]
 + targeting (Targeting, optional) - Advertising targeting information about the post. [FB, LI, TW]
-
 + createdDate: 2015-09-04T14:26:16.000Z (string, optional) - ISO date of when the post was created. [All]
 
-## Paging (object)
+## PagingResponse (object)
 
 + nextPageToken: akjvzSDFijwefADSC== (string, required) - Token used to retrieve the next page.
 + previousPageToken: WIDJFjkafF== (string, optional) - Token used to retrieve the previous page, if available.
@@ -177,7 +184,7 @@ SCUM Facade API V3
 
 ## Results (object)
 + posts (array[Post], required) - Array of posts matching the stream type.
-+ paging (Paging, optional) - Paging information that can be used in subsequent requests.
++ paging (PagingResponse, optional) - Paging information that can be used in subsequent requests.
 
 ## Error (object)
 
