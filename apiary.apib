@@ -26,6 +26,12 @@ SCUM Facade API V3
 + avatarUrl: http://snoopdog.com/snoop.jpg (string, optional) - Avatar URL of the profile who authored this comment. [All]
 + profileId: 420swed (string, optional) - ID of the profile who authored this comment. [All]
 
+## ProfileSummary (object)
++ sourceNetwork (enum[string], required)
++ profileId (string, optional)
++ name (string, optional)
++ avatarUrl (string, required)
+
 ## FacebookCommentPrivacy (object)
 
 + isHidden: false (boolean, optional) - If the comment is hidden. [FB]
