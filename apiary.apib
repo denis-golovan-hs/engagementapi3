@@ -69,9 +69,6 @@ SCUM Facade API V3
 + scopeIdSet (array[string], required) - array of ids related to scope restriction
 + hidden (boolean, optional)
 
-## Targeting (object)
-+ sourceNetwork: YouTube (enum[string], required) - source
-
 ## InReplyTo (object)
 + sourceNetwork: YouTube (enum[string], required)
 + objectType: post (enum[string], required) - ['post', 'comment']
@@ -86,7 +83,7 @@ SCUM Facade API V3
 + privacy (Privacy, optional) - The privacy settings of this comment. [FB]
 + statistics (array[Statistic], required) - stats object
 + currentUserRating: none (enum[string], optional) - Should this be an enum or just string? If enum, what is in it?
-+ createdDate: `2015-09-04T14:26:16.000Z` (string, optional) - ISO formatted DateTime that this comment was created. [All]
++ createdDate: 1450828522869 (string, optional) - Epoch timestamp [All]
 
 ## CommentList (object)
 + comments (array[Comment], required) - actual comments
@@ -105,9 +102,8 @@ SCUM Facade API V3
 + status (Status, optional) - Status of the post [YT]
 + tags (array[Tag], optional) - Post tags
 + privacy (Privacy, optional) - Privacy information about the post. [FB, LI, TW, YT]
-+ targeting (Targeting, optional) - Advertising targeting information about the post. [FB, LI, TW]
-+ currentUserRating: like (enum[string], optional) - Should this be an enum or just string? If enum, what values?
-+ createdDate: 2015-09-04T14:26:16.000Z (string, optional) - ISO date of when the post was created. [All]
++ currentUserRating: like (enum[string], optional) - like,dislike, none. Should this be an enum or just string? If enum, what values?
++ createdDate: 1450828522869 (string, optional) - Unix epoch timestamp. [All]
 
 ## PagingResponse (object)
 + nextPageToken: akjvzSDFijwefADSC== (string, required) - Token used to retrieve the next page.
