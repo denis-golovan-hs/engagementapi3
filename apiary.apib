@@ -54,11 +54,10 @@ SCUM Facade API V3
 + latitude: 20.123 (number, required) - Latitude of this position. [TW, YT]
 + longitude: 40.123 (number, required) - Longitude of this position. [TW, YT]
 
-## FacebookPlace (object)
-+ pageId: asdfzv (string, required) - Page ID associated with this place. [FB]
-
 ## Place (object)
-+ facebook (FacebookPlace, optional) - Facebook place information. [FB]
++ sourceNetwork (enum[string], required) - ['Twitter', 'Facebook', ...]
++ resourceType: page (enum[string], required) 
++ resourceId: asdfzv (string, required) 
 
 ## Location (object)
 + position (Position, optional) - Position metadata. [TW, YT]
