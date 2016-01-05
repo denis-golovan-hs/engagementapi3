@@ -11,36 +11,11 @@ SCUM Facade API V3
 + title: Message Title (string, optional) - Title of the message. [All]
 + body: Message body goes here. (string, required) - Body of the message. [All]
 
-## Author (object)
-+ name: Snoop Lion (string, optional) - Name of the profile who authored this comment. [All]
-+ avatarUrl: http://snoopdog.com/snoop.jpg (string, optional) - Avatar URL of the profile who authored this comment. [All]
-+ profileId: 420swed (string, optional) - ID of the profile who authored this comment. [All]
-
 ## ProfileSummary (object)
 + sourceNetwork: Twitter (enum[string], required)
 + profileId: 1234abc (string, optional)
 + name (string, optional)
 + avatarUrl (string, required)
-
-## Comment (object)
-+ id: jksdfZJfiewrfVCW== (string, required) - ID of this comment. [All]
-+ parent (InReplyTo, required) - defines the parent
-+ message (Message, optional) - The message this comment contains. [All]
-+ media (Media, optional) - Any media contained within this comment. [All]
-+ author (ProfileSummary, erquired) - The author of this comment. [All]
-+ privacy (Privacy, optional) - The privacy settings of this comment. [FB]
-+ statistics (array[Statistic], required) - stats object
-+ currentUserRating (enum[string], optional) - What is in enum?
-+ createdDate: `2015-09-04T14:26:16.000Z` (string, optional) - ISO formatted DateTime that this comment was created. [All]
-
-## CommentList (object)
-+ comments (array[Comment], required) - actual comments
-+ pagingResponse (PagingResponse, required) - paging
-
-## InReplyTo (object)
-+ sourceNetwork: Twitter (enum[string], required)
-+ objectType: post (enum[string], required) - ['post', 'comment']
-+ objectId: abcd12345 (string, required) - Id of the post or comment or whatever
 
 ## Link (object)
 + url: http://link.test (string, required) - URL that the link is pointing to. [All]
@@ -59,6 +34,21 @@ SCUM Facade API V3
 + links (array[Link], optional) - Any links in the post. [FB, G+, LI, IG]
 + images (array[Image], optional) - Any images in the post. [FB, G+, LI, IG, TW]
 + videos (array[Video], optional) - Any videos in the post. [YT]
+
+## Statistic (object)
++ sourceNetwork (enum[string], required) - source
++ type: likes (enum[string], required) - type of statistics
++ value (string, required) - value
+
+## Status (object)
++ sourceNetwork: YouTube (enum[string], required) - source
++ type: videoStatus (string, required) - type of status
++ statusValue (string, required) - actual status
++ statusDescription (string, optional) - additional description
+
+## Tag (object)
++ sourceNetwork (enum[string], required) - ['Twitter', 'Facebook', ...]
++ name (string, required) - actual tag
 
 ## Position (object)
 + latitude: 20.123 (number, required) - Latitude of this position. [TW, YT]
@@ -83,36 +73,26 @@ SCUM Facade API V3
 ## Targeting (object)
 + sourceNetwork: YouTube (enum[string], required) - source
 
-<!--
-## Statistics (object)
-+ likes: 100 (number, optional) - The number of likes this object has received. [FB, G+, LI, IG, YT]
-+ dislikes: 5 (number, optional) - The number of dislikes this object has received. [YT]
-+ replies: 200 (number, optional) - The number of replies or comments this object has received. [FB, G+, LI, IG, TW, YT]
-+ favorites: 300 (number, optional) - The number of favorites this object has received. [YT, TW]
-+ shares: 1000 (number, optional) - The number of shares this object has received. [FB] 
-+ views: 123456789 (number, optional) - The number of views this object has received. [YT] 
--->
+## InReplyTo (object)
++ sourceNetwork: Twitter (enum[string], required)
++ objectType: post (enum[string], required) - ['post', 'comment']
++ objectId: abcd12345 (string, required) - Id of the post or comment or whatever
 
-## Statistic (object)
-+ sourceNetwork (enum[string], required) - source
-+ type: likes (enum[string], required) - type of statistics
-+ value (string, required) - value
+## Comment (object)
++ id: jksdfZJfiewrfVCW== (string, required) - ID of this comment. [All]
++ parent (InReplyTo, required) - defines the parent
++ message (Message, optional) - The message this comment contains. [All]
++ media (Media, optional) - Any media contained within this comment. [All]
++ author (ProfileSummary, required) - The author of this comment. [All]
++ privacy (Privacy, optional) - The privacy settings of this comment. [FB]
++ statistics (array[Statistic], required) - stats object
++ currentUserRating (enum[string], optional) - What is in enum?
++ createdDate: `2015-09-04T14:26:16.000Z` (string, optional) - ISO formatted DateTime that this comment was created. [All]
 
-## Status (object)
-+ sourceNetwork: YouTube (enum[string], required) - source
-+ type: videoStatus (string, required) - type of status
-+ statusValue (string, required) - actual status
-+ statusDescription (string, optional) - additional description
+## CommentList (object)
++ comments (array[Comment], required) - actual comments
++ pagingResponse (PagingResponse, required) - paging
 
-<!--
-## YouTubePostStatus (object)
-+ videoStatus (enum[string], optional) - ['Deleted' or 'Failed' or 'Processed' or 'Rejected' or 'Uploaded']: Status of the YouTube video, as reported by their API.
-+ statusDescription (string, optional) - Further details about the video status. This should be populated for statuses of 'Failed' or 'Rejected'.
--->
-
-## Tag (object)
-+ sourceNetwork (enum[string], required) - ['Twitter', 'Facebook', ...]
-+ name (string, required) - actual tag
 
 ## Post (object)
 + id: zxcv1234 (string, required) - ID of the post of the social network. [All]
@@ -132,28 +112,14 @@ SCUM Facade API V3
 + createdDate: 2015-09-04T14:26:16.000Z (string, optional) - ISO date of when the post was created. [All]
 
 ## PagingResponse (object)
-
 + nextPageToken: akjvzSDFijwefADSC== (string, required) - Token used to retrieve the next page.
 + previousPageToken: WIDJFjkafF== (string, optional) - Token used to retrieve the previous page, if available.
-
-## Playlist (object)
-
-+ id: poinWEFv123n== (string, required) - ID of the playlist on the social network. [YT]
-+ title: Cat videos (string, optional) - Title of the playlist. [YT]
-+ createdAt: 2015-09-04T14:26:16.000Z (string, optional) - ISO-formatted date time of when the playlist was created. [YT]
-+ channelId: nerAKSNdf541== (string, optional) - Channel to which this playlist belongs. [YT]
-+ description: A collection of the best cat videos in the world. (string, optional) - Description of the playlist. [YT]
-+ tags (array[string], optional) - Collection of tags for the playlist. [YT]
-+ privacy (Privacy, optional) - Playlist privacy settings. [YT]
-+ count: 10 (number, optional) - Number of items in the playlist. [YT]
-+ embedHtml: http://www.youtube.com/p/kjasdfvzxcv/ (string, optional) - HTML to be used for embedding the playlist. [YT]
 
 ## Results (object)
 + posts (array[Post], required) - Array of posts matching the stream type.
 + paging (PagingResponse, optional) - Paging information that can be used in subsequent requests.
 
 ## Error (object)
-
 
 
 ## Posts Collection [/posts]
