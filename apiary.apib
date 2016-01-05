@@ -8,21 +8,10 @@ SCUM Facade API V3
 # Data Structures
 
 ## Message (object)
-
 + title: Message Title (string, optional) - Title of the message. [All]
 + body: Message body goes here. (string, required) - Body of the message. [All]
 
-## Image (object)
-
-+ url: http://url.to.image/image.jpg (string, required) - URL to this image. [All]
-
-<!--
-## CommentMedia (object)
-+ images (array[Image], optional) - Images for this comment. [FB]
--->
-
 ## Author (object)
-
 + name: Snoop Lion (string, optional) - Name of the profile who authored this comment. [All]
 + avatarUrl: http://snoopdog.com/snoop.jpg (string, optional) - Avatar URL of the profile who authored this comment. [All]
 + profileId: 420swed (string, optional) - ID of the profile who authored this comment. [All]
@@ -33,33 +22,20 @@ SCUM Facade API V3
 + name (string, optional)
 + avatarUrl (string, required)
 
-## FacebookCommentPrivacy (object)
-
-+ isHidden: false (boolean, optional) - If the comment is hidden. [FB]
-
-## CommentPrivacy (object)
-
-+ facebook (FacebookCommentPrivacy, optional) - Facebook comment privacy settings. [FB]
-
 ## Comment (object)
 + id: jksdfZJfiewrfVCW== (string, required) - ID of this comment. [All]
 + parent (InReplyTo, required) - defines the parent
 + message (Message, optional) - The message this comment contains. [All]
 + media (Media, optional) - Any media contained within this comment. [All]
 + author (ProfileSummary, erquired) - The author of this comment. [All]
-+ privacy (CommentPrivacy, optional) - The privacy settings of this comment. [FB]
-+ statistics (Statistics, required) - stats object
-+ currentUserRating (enum[number], optional) <!-- DOUBLE CHECK TYPE -->
++ privacy (Privacy, optional) - The privacy settings of this comment. [FB]
++ statistics (array[Statistic], required) - stats object
++ currentUserRating (enum[string], optional) - What is in enum?
 + createdDate: `2015-09-04T14:26:16.000Z` (string, optional) - ISO formatted DateTime that this comment was created. [All]
 
 ## CommentList (object)
 + comments (array[Comment], required) - actual comments
 + pagingResponse (PagingResponse, required) - paging
-<!--+ totalCount (number, required) - total number of comments at that level-->
-
-## TwitterInReplyTo (object)
-
-+ tweetId: abc12345 (string, required) - Tweet ID of the message being replied to. [TW]
 
 ## InReplyTo (object)
 + sourceNetwork: Twitter (enum[string], required)
@@ -74,100 +50,85 @@ SCUM Facade API V3
 + includeImagePreview: true (boolean, optional) - Whether to show the preview image. [FB, G+, LI]
 
 ## Video (object)
-
 + embedUrl: www.youtube.com/embed/ASDfjkzf (string, optional) - URL to an embeddable video. [YT]
 
-## Media (object)
+## Image (object)
++ url: http://url.to.image/image.jpg (string, required) - URL to this image. [All]
 
+## Media (object)
 + links (array[Link], optional) - Any links in the post. [FB, G+, LI, IG]
 + images (array[Image], optional) - Any images in the post. [FB, G+, LI, IG, TW]
 + videos (array[Video], optional) - Any videos in the post. [YT]
 
 ## Position (object)
-
 + latitude: 20.123 (number, required) - Latitude of this position. [TW, YT]
 + longitude: 40.123 (number, required) - Longitude of this position. [TW, YT]
 
 ## FacebookPlace (object)
-
 + pageId: asdfzv (string, required) - Page ID associated with this place. [FB]
 
 ## Place (object)
-
 + facebook (FacebookPlace, optional) - Facebook place information. [FB]
 
 ## Location (object)
-
 + position (Position, optional) - Position metadata. [TW, YT]
 + place (Place, optional) - Place metadata. [FB]
 
-## TwitterPrivacy (object)
-
-## FacebookPrivacy (object)
-
-## LinkedInPrivacy (object)
-
-## YouTubePrivacySetting
-
-## YouTubePrivacy (object)
-
-+ privacy: Unlisted (string, optional) - YouTube privacy setting. Must be one of "Private", "Unlisted" or "Public". [YT] 
-
 ## Privacy (object)
-
-+ twitter: null (TwitterPrivacy, optional) - Twitter privacy settings. [TW]
-+ facebook: null (FacebookPrivacy, optional) - Facebook privacy settings. [FB]
-+ linkedIn: null (LinkedInPrivacy, optional) - LinkedIn privacy settings. [LI]
-
-## TwitterTargeting
-
-## LinkedInTargeting
-
-## FacebookTargeting
++ sourceNetwork: YouTube (enum[string], required) - source
++ scope (enum[string], required) - [Public, DirectConnections, DirectAndSecondaryConnections, Private, Unlisted]
++ scopeIdSet (array[string], required) - array of ids related to scope restriction
++ hidden (boolean, optional)
 
 ## Targeting (object)
++ sourceNetwork: YouTube (enum[string], required) - source
 
-+ twitter: null (TwitterTargeting, optional) - Twitter targeting information. [TW]
-+ facebook: null (FacebookTargeting, optional) - Facebook targeting information. [FB]
-+ linkedIn: null (LinkedInTargeting, optional) - LinkedIn targeting information. [LI]
-
+<!--
 ## Statistics (object)
-
 + likes: 100 (number, optional) - The number of likes this object has received. [FB, G+, LI, IG, YT]
 + dislikes: 5 (number, optional) - The number of dislikes this object has received. [YT]
 + replies: 200 (number, optional) - The number of replies or comments this object has received. [FB, G+, LI, IG, TW, YT]
 + favorites: 300 (number, optional) - The number of favorites this object has received. [YT, TW]
 + shares: 1000 (number, optional) - The number of shares this object has received. [FB] 
 + views: 123456789 (number, optional) - The number of views this object has received. [YT] 
+-->
 
 ## Statistic (object)
 + sourceNetwork (enum[string], required) - source
 + type: likes (enum[string], required) - type of statistics
 + value (string, required) - value
 
+## Status (object)
++ sourceNetwork: YouTube (enum[string], required) - source
++ type: videoStatus (string, required) - type of status
++ statusValue (string, required) - actual status
++ statusDescription (string, optional) - additional description
+
+<!--
 ## YouTubePostStatus (object)
 + videoStatus (enum[string], optional) - ['Deleted' or 'Failed' or 'Processed' or 'Rejected' or 'Uploaded']: Status of the YouTube video, as reported by their API.
 + statusDescription (string, optional) - Further details about the video status. This should be populated for statuses of 'Failed' or 'Rejected'.
+-->
 
 ## Tag (object)
 + sourceNetwork (enum[string], required) - ['Twitter', 'Facebook', ...]
 + name (string, required) - actual tag
 
 ## Post (object)
-
 + id: zxcv1234 (string, required) - ID of the post of the social network. [All]
 + sourceNetwork: YouTube (enum[string], required) - Type of the message [All]
 + message (Message, optional) - Message of the post. [FB, G+, LI, IG, TW]
 + inReplyTo (InReplyTo, optional) - Information about the post this is replying to. [TW]
-+ media (Media, optional) - Media contained within this post. [FB, G+, LI, IG, TW, YT]
-+ statistics (array[Statistic], optional) - Information about likes, shares, views, etc. for this post. [All]
 + author (ProfileSummary, required)
-+ location (Location, optional) - Location metadata about the post. [FB, TW, YT]
-+ status (YouTubePostStatus, optional) - Status of the post [YT]
-+ tags (array[Tag], optional) - Post tags
 + commentList (CommentList, optional) - Comments
++ media (Media, optional) - Media contained within this post. [FB, G+, LI, IG, TW, YT]
++ statistics (array[Statistic], required) - Information about likes, shares, views, etc. for this post. [All]
++ location (Location, optional) - Location metadata about the post. [FB, TW, YT]
++ status (Status, optional) - Status of the post [YT]
++ tags (array[Tag], optional) - Post tags
 + privacy (Privacy, optional) - Privacy information about the post. [FB, LI, TW, YT]
 + targeting (Targeting, optional) - Advertising targeting information about the post. [FB, LI, TW]
++ currentUserRating (string, optional) - What is this?
 + createdDate: 2015-09-04T14:26:16.000Z (string, optional) - ISO date of when the post was created. [All]
 
 ## PagingResponse (object)
