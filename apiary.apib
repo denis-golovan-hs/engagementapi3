@@ -86,7 +86,7 @@ SCUM Facade API V3
 + author (ProfileSummary, required) - The author of this comment. [All]
 + privacy (Privacy, optional) - The privacy settings of this comment. [FB]
 + statistics (array[Statistic], required) - stats object
-+ currentUserRating: none (enum[string], optional) - What is in enum?
++ currentUserRating: none (enum[string], optional) - Should this be an enum or just string? If enum, what is in it?
 + createdDate: `2015-09-04T14:26:16.000Z` (string, optional) - ISO formatted DateTime that this comment was created. [All]
 
 ## CommentList (object)
@@ -107,7 +107,7 @@ SCUM Facade API V3
 + tags (array[Tag], optional) - Post tags
 + privacy (Privacy, optional) - Privacy information about the post. [FB, LI, TW, YT]
 + targeting (Targeting, optional) - Advertising targeting information about the post. [FB, LI, TW]
-+ currentUserRating (string, optional) - What is this?
++ currentUserRating: like (enum[string], optional) - Should this be an enum or just string? If enum, what values?
 + createdDate: 2015-09-04T14:26:16.000Z (string, optional) - ISO date of when the post was created. [All]
 
 ## PagingResponse (object)
