@@ -74,7 +74,7 @@ SCUM Facade API V3
 + sourceNetwork: YouTube (enum[string], required) - source
 
 ## InReplyTo (object)
-+ sourceNetwork: Twitter (enum[string], required)
++ sourceNetwork: YouTube (enum[string], required)
 + objectType: post (enum[string], required) - ['post', 'comment']
 + objectId: abcd12345 (string, required) - Id of the post or comment or whatever
 
@@ -92,7 +92,6 @@ SCUM Facade API V3
 ## CommentList (object)
 + comments (array[Comment], required) - actual comments
 + pagingResponse (PagingResponse, required) - paging
-
 
 ## Post (object)
 + id: zxcv1234 (string, required) - ID of the post of the social network. [All]
