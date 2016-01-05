@@ -15,7 +15,7 @@ SCUM Facade API V3
 + sourceNetwork: YouTube (enum[string], required)
 + profileId: 1234abc (string, optional)
 + name (string, optional)
-+ avatarUrl (string, required)
++ avatarUrl: `http://www.youtube.com/user123`(string, required)
 
 ## Link (object)
 + url: http://link.test (string, required) - URL that the link is pointing to. [All]
@@ -86,7 +86,7 @@ SCUM Facade API V3
 + author (ProfileSummary, required) - The author of this comment. [All]
 + privacy (Privacy, optional) - The privacy settings of this comment. [FB]
 + statistics (array[Statistic], required) - stats object
-+ currentUserRating (enum[string], optional) - What is in enum?
++ currentUserRating: none (enum[string], optional) - What is in enum?
 + createdDate: `2015-09-04T14:26:16.000Z` (string, optional) - ISO formatted DateTime that this comment was created. [All]
 
 ## CommentList (object)
