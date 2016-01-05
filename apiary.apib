@@ -44,29 +44,29 @@ SCUM Facade API V3
 
 + id: jksdfZJfiewrfVCW== (string, required) - ID of this comment. [All]
 + createdDate: `2015-09-04T14:26:16.000Z` (string, optional) - ISO formatted DateTime that this comment was created. [All]
-+ parentObjectId: iwnASDfinz (string, required) - Object ID of the parent of this comment. [All]
-+ parentObjectType: channel (string, required) - Object type of the parent of this comment. [All]
++ parent (InReplyTo, required) - defines the parent
 + message (Message, optional) - The message this comment contains. [All]
 + media (CommentMedia, optional) - Any media contained within this comment. [All]
-+ author (Author, optional) - The author of this comment. [All]
++ author (ProfileSummary, erquired) - The author of this comment. [All]
 + privacy (CommentPrivacy, optional) - The privacy settings of this comment. [FB]
-+ likeCount: 20 (number, optional) - The number of likes this comment received. [FB, YT]
-+ replyCount: 5 (number, optional) - The number of replies this comment has. [FB, YT]
++ statistics (Statistics, required) - stats object
++ currentUserRating (enum[number], optional)
 
 ## CommentList (object)
 + comments (array[Comment], required) - actual comments
 + pagingResponse (PagingResponse, required) - paging
+<!--+ totalCount (number, required) - total number of comments at that level-->
 
 ## TwitterInReplyTo (object)
 
 + tweetId: abc12345 (string, required) - Tweet ID of the message being replied to. [TW]
 
 ## InReplyTo (object)
-
-+ twitter (TwitterInReplyTo, optional) - ReplyTo information for Twitter. [TW]
++ sourceNetwork: Twitter (enum[string], required)
++ objectType: post (enum[string], required) - ['post', 'comment']
++ objectId: abcd12345 (string, required) - Id of the post or comment or whatever
 
 ## Link (object)
-
 + url: http://link.test (string, required) - URL that the link is pointing to. [All]
 + title: My link name (string, optional) - Display text for the link. [FB, G+, LI]
 + description: My link description (string, optional) - Description of the link. [LI]
@@ -151,7 +151,7 @@ SCUM Facade API V3
 ## Post (object)
 
 + id: zxcv1234 (string, required) - ID of the post of the social network. [All]
-+ source: YouTube (enum[string], required) - Type of the message [All]
++ sourceNetwork: YouTube (enum[string], required) - Type of the message [All]
 + message (Message, optional) - Message of the post. [FB, G+, LI, IG, TW]
 + inReplyTo (InReplyTo, optional) - Information about the post this is replying to. [TW]
 + media (Media, optional) - Media contained within this post. [FB, G+, LI, IG, TW, YT]
