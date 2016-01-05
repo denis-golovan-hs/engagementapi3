@@ -56,8 +56,8 @@ SCUM Facade API V3
 
 ## Place (object)
 + sourceNetwork (enum[string], required) - ['Twitter', 'Facebook', ...]
-+ resourceType: page (enum[string], required) 
-+ resourceId: asdfzv (string, required) 
++ resourceType: page (enum[string], required) [FB]
++ resourceId: asdfzv (string, required) [FB]
 
 ## Location (object)
 + position (Position, optional) - Position metadata. [TW, YT]
@@ -72,7 +72,7 @@ SCUM Facade API V3
 ## InReplyTo (object)
 + sourceNetwork: YouTube (enum[string], required)
 + objectType: post (enum[string], required) - ['post', 'comment']
-+ objectId: abcd12345 (string, required) - Id of the post or comment or whatever
++ objectId: abcd12345 (string, required) - Id of the post or comment
 
 ## Comment (object)
 + id: jksdfZJfiewrfVCW== (string, required) - ID of this comment. [All]
@@ -81,9 +81,9 @@ SCUM Facade API V3
 + media (Media, optional) - Any media contained within this comment. [All]
 + author (ProfileSummary, required) - The author of this comment. [All]
 + privacy (Privacy, optional) - The privacy settings of this comment. [FB]
-+ statistics (array[Statistic], required) - stats object
-+ currentUserRating: none (enum[string], optional) - Should this be an enum or just string? If enum, what is in it?
-+ createdDate: 1450828522869 (string, optional) - Epoch timestamp [All]
++ statistics (array[Statistic], required) - array of stats objects [All]
++ currentUserRating: none (enum[string], optional) - [like, dislike, none] Current user's own rating 
++ createdDate: 1450828522869 (string, optional) - Unix epoch timestamp. [All]
 
 ## CommentList (object)
 + comments (array[Comment], required) - actual comments
@@ -102,8 +102,8 @@ SCUM Facade API V3
 + status (Status, optional) - Status of the post [YT]
 + tags (array[Tag], optional) - Post tags
 + privacy (Privacy, optional) - Privacy information about the post. [FB, LI, TW, YT]
-+ currentUserRating: like (enum[string], optional) - like,dislike, none. Should this be an enum or just string? If enum, what values?
-+ createdDate: 1450828522869 (string, optional) - Unix epoch timestamp. [All]
++ currentUserRating: like (enum[string], optional) - [like, dislike, none] Current user's own rating 
++ createdDate: 1450828522869 (string, required) - Unix epoch timestamp. [All]
 
 ## PagingResponse (object)
 + nextPageToken: akjvzSDFijwefADSC== (string, required) - Token used to retrieve the next page.
