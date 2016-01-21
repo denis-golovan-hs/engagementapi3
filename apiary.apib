@@ -8,14 +8,15 @@ SCUM Facade API V3
 # Data Structures
 
 ## Message (object)
++ sourceNetwork: YouTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
 + title: Message Title (string, optional) - Title of the message. [All]
 + body: Message body goes here. (string, required) - Body of the message. [All]
 
 ## ProfileSummary (object)
-+ sourceNetwork: YouTube (enum[string], required)
-+ profileId: 1234abc (string, optional)
-+ name (string, optional)
-+ avatarUrl: `http://www.youtube.com/user123`(string, required)
++ sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
++ profileId: 1234abc (string, required)
++ name: Bob (string, optional)
++ avatarUrl: `http://www.youtube.com/user123`(string, optional)
 
 ## Link (object)
 + url: http://link.test (string, required) - URL that the link is pointing to. [All]
@@ -26,6 +27,9 @@ SCUM Facade API V3
 
 ## Video (object)
 + embedUrl: www.youtube.com/embed/ASDfjkzf (string, optional) - URL to an embeddable video. [YT]
++ sourceUrl: www.youtube.com/ASDLJLAasd (string, optional) - URL to source video
++ videoId: ADLKJsdfsl3 (string, optional) - Video ID
++ previewImageUrl (string, optional) - Preview image URL
 
 ## Image (object)
 + url: http://url.to.image/image.jpg (string, required) - URL to this image. [All]
@@ -36,18 +40,18 @@ SCUM Facade API V3
 + videos (array[Video], optional) - Any videos in the post. [YT]
 
 ## Statistic (object)
-+ sourceNetwork (enum[string], required) - source
-+ type: likes (enum[string], required) - type of statistics
++ sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
++ type: likes (enum[string], required) - type of statistics ['likes', 'dislikes', 'replies', 'views']
 + value (string, required) - value
 
 ## Status (object)
-+ sourceNetwork: YouTube (enum[string], required) - source
++ sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
 + type: videoStatus (string, required) - type of status
-+ statusValue (string, required) - actual status
++ statusValue (string, required) - actual status ['deleted', 'failed', 'processed', 'rejected', 'uploaded']
 + statusDescription (string, optional) - additional description
 
 ## Tag (object)
-+ sourceNetwork (enum[string], required) - ['Twitter', 'Facebook', ...]
++ sourceNetwork: youTube (enum[string], required) - ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
 + name (string, required) - actual tag
 
 ## Position (object)
@@ -55,7 +59,7 @@ SCUM Facade API V3
 + longitude: 40.123 (number, required) - Longitude of this position. [TW, YT]
 
 ## Place (object)
-+ sourceNetwork (enum[string], required) - ['Twitter', 'Facebook', ...]
++ sourceNetwork: youTube (enum[string], required) - ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
 + resourceType: page (enum[string], required) [FB]
 + resourceId: asdfzv (string, required) [FB]
 
@@ -64,26 +68,26 @@ SCUM Facade API V3
 + place (Place, optional) - Place metadata. [FB]
 
 ## Privacy (object)
-+ sourceNetwork: YouTube (enum[string], required) - source
-+ scope: Public (enum[string], required) - [Public, DirectConnections, DirectAndSecondaryConnections, Private, Unlisted]
++ sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
++ scope: public (enum[string], required) - [public, directconnections, directandsecondaryconnections, private, unlisted]
 + scopeIdSet (array[string], optional) - array of ids related to scope restriction
 + hidden (boolean, optional)
 
 ## InReplyTo (object)
-+ sourceNetwork: YouTube (enum[string], required)
++ sourceNetwork: youTube (enum[string], required)
 + objectType: post (enum[string], required) - ['post', 'comment']
 + objectId: abcd12345 (string, required) - Id of the post or comment
 
 ## Comment (object)
 + id: jksdfZJfiewrfVCW== (string, required) - ID of this comment. [All]
 + inReplyTo (InReplyTo, required) - defines the parent
-+ message (Message, optional) - The message this comment contains. [All]
-+ media (Media, optional) - Any media contained within this comment. [All]
++ message (Message, required) - The message this comment contains. [All]
 + author (ProfileSummary, required) - The author of this comment. [All]
-+ privacy (Privacy, optional) - The privacy settings of this comment. [FB]
 + statistics (array[Statistic], required) - array of stats objects [All]
-+ currentUserRating: none (enum[string], optional) - [like, dislike, none] Current user's own rating 
-+ createdDate: 1450828522869 (string, optional) - Unix epoch timestamp. [All]
++ media (Media, optional) - Any media contained within this comment. [All]
++ privacy (Privacy, optional) - The privacy settings of this comment. [FB]
++ currentUserRating: none (enum[string], required) - [like, dislike, none] Current user's own rating 
++ createdDate: 1450828522869 (string, required) - Unix epoch timestamp. [All]
 
 ## CommentList (object)
 + comments (array[Comment], required) - actual comments
@@ -91,13 +95,13 @@ SCUM Facade API V3
 
 ## Post (object)
 + id: zxcv1234 (string, required) - ID of the post of the social network. [All]
-+ sourceNetwork: YouTube (enum[string], required) - Type of the message [All]
-+ message (Message, optional) - Message of the post. [FB, G+, LI, IG, TW]
-+ inReplyTo (InReplyTo, optional) - Information about the post this is replying to. [TW]
++ sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
++ message (Message, required) - Message of the post. [FB, G+, LI, IG, TW]
 + author (ProfileSummary, required)
++ statistics (array[Statistic], required) - Information about likes, shares, views, etc. for this post. [All]
++ inReplyTo (InReplyTo, optional) - Information about the post this is replying to. [TW]
 + commentList (CommentList, optional) - Comments
 + media (Media, optional) - Media contained within this post. [FB, G+, LI, IG, TW, YT]
-+ statistics (array[Statistic], required) - Information about likes, shares, views, etc. for this post. [All]
 + location (Location, optional) - Location metadata about the post. [FB, TW, YT]
 + status (Status, optional) - Status of the post [YT]
 + tags (array[Tag], optional) - Post tags
@@ -106,7 +110,7 @@ SCUM Facade API V3
 + createdDate: 1450828522869 (string, required) - Unix epoch timestamp. [All]
 
 ## PagingResponse (object)
-+ nextPageToken: akjvzSDFijwefADSC== (string, required) - Token used to retrieve the next page.
++ nextPageToken: akjvzSDFijwefADSC== (string, optional) - Token used to retrieve the next page.
 + previousPageToken: WIDJFjkafF== (string, optional) - Token used to retrieve the previous page, if available.
 
 ## Results (object)
