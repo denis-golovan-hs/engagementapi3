@@ -113,9 +113,14 @@ SCUM Facade API V3
 + nextPageToken: akjvzSDFijwefADSC== (string, optional) - Token used to retrieve the next page.
 + previousPageToken: WIDJFjkafF== (string, optional) - Token used to retrieve the previous page, if available.
 
-## Results (object)
+## PostResults (object)
 + posts (array[Post], required) - Array of posts matching the stream type.
 + paging (PagingResponse, optional) - Paging information that can be used in subsequent requests.
+
+## CommentsResults (object)
++ comments (array[Comment], required) - Array of comments for post or comment
++ paging (PagingResponse, optional) - Paging information that can be used in subsequent requests.
+
 
 ## Error (object)
 
@@ -129,11 +134,27 @@ SCUM Facade API V3
     
         * Y_MY_CHANNEL - Posts from My Channel. [YT]
         
-    + pageSize (number, required) - number of posts per page
-    + pageToken (string, required) - Page token
+    + pageSize (number, optional) - number of posts per page
+    + pageToken (string, optional) - Page token
         
 + Response 200 (application/json)
     + Attributes
-        + request: /api/3/posts/150332989?type=Y_MY_CHANNEL
-        + results (Results, required) - Result object
+        + request: /api/2/posts/150332989?type=Y_MY_CHANNEL
+        + results (PostResults, required) - Result object
         + error (Error, required) - Error object
+        
+### Get comments [GET /comments/{socialProfileId}{?objectType}{?objectId}{?pageSize}{?nextPageToken}{?moderationStatus}]
++ Parameters
+    + socialProfileId (string, required) - Social profile ID of the user performing this search. [All]
+    + objectType (string, required) - Type of object to get the comments on ['post','comment']
+    + objectId (string, required) - Id of the object for which to get comments
+    + pageSize (number, optional) - number of posts per page
+    + nextPageToken (string, optional) - Page token
+    + moderationStatus (string, optional ) - Comment moderation status ['heldforreview', 'posted', 'likelyspam']
+
++ Response 200 (application/json)
+    + Attributes
+        + request: /api/2/comments/150332989?objectType=Y_MY_CHANNEL
+        + results (CommentsResults, required) - Result object
+        + error (Error, required) - Error object
+
