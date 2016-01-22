@@ -129,11 +129,11 @@ SCUM Facade API V3
 
 ### Get posts [GET /posts/{socialProfileId}{?type}{?pageSize}{?pageToken}]
 + Parameters
-    + socialProfileId (string, required) - Social profile ID of the user performing this search.
-    + type (string, required) - Type of posts to be collected and returned. Valid values are:
+    + socialProfileId: 12344599 (string, required) - Social profile ID of the user performing this search.
+    + type: Y_MY_CHANNEL (string, required) - Type of posts to be collected and returned. Valid values are:
         * Y_MY_CHANNEL - Posts from YouTube's My Channel. 
-    + pageSize (number, optional) - number of posts per page
-    + pageToken (string, optional) - Page token
+    + pageSize: 10 (number, optional) - number of posts per page
+    + pageToken: 12ASD13sfdsf24 (string, optional) - Page token
         
 + Response 200 (application/json)
     + Attributes
@@ -145,12 +145,12 @@ SCUM Facade API V3
 
 ### Get comments [GET /comments/{socialProfileId}{?objectType}{?objectId}{?pageSize}{?nextPageToken}{?moderationStatus}]
 + Parameters
-    + socialProfileId (string, required) - Social profile ID of the user performing this search. 
-    + objectType (string, required) - Type of object to get the comments on ['post','comment']
-    + objectId (string, required) - Id of the object for which to get comments
-    + pageSize (number, optional) - number of posts per page
-    + nextPageToken (string, optional) - Page token
-    + moderationStatus (string, optional ) - Comment moderation status ['heldforreview', 'posted', 'likelyspam']
+    + socialProfileId: 150332989 (string, required) - Social profile ID of the user performing this search. 
+    + objectType: post (string, required) - Type of object to get the comments on ['post','comment']
+    + objectId: 1231ASDwe (string, required) - Id of the object for which to get comments
+    + pageSize: 10 (number, optional) - number of posts per page
+    + nextPageToken: sdfjhkAD213fF (string, optional) - Page token
+    + moderationStatus: posted (string, optional ) - Comment moderation status ['heldforreview', 'posted', 'likelyspam']
 
 + Response 200 (application/json)
     + Attributes
@@ -160,7 +160,7 @@ SCUM Facade API V3
 
 ### Post comment [POST /comments/{socialProfileId}]
 + Parameters
-    + socialProfileId (string, required) - Social profile ID of the user performing this search. 
+    + socialProfileId: 123123123 (string, required) - Social profile ID of the user performing this search. 
 
 + Request body (application/json)
     + Attributes
