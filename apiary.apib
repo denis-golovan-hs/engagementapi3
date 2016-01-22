@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.hootsuite.com/api/3
+HOST: https://api.hootsuite.com/api/2
 
 # Engagement API V3
 
@@ -9,8 +9,8 @@ SCUM Facade API V3
 
 ## Message (object)
 + sourceNetwork: YouTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
-+ title: Message Title (string, optional) - Title of the message. [All]
-+ body: Message body goes here. (string, required) - Body of the message. [All]
++ title: Message Title (string, optional) - Title of the message. 
++ body: Message body goes here. (string, required) - Body of the message.
 
 ## ProfileSummary (object)
 + sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
@@ -19,25 +19,25 @@ SCUM Facade API V3
 + avatarUrl: `http://www.youtube.com/user123`(string, optional)
 
 ## Link (object)
-+ url: http://link.test (string, required) - URL that the link is pointing to. [All]
-+ title: My link name (string, optional) - Display text for the link. [FB, G+, LI]
-+ description: My link description (string, optional) - Description of the link. [LI]
-+ previewImageUrl: http://preview.fake/preview.jpg (string, optional) - URL of image preview. [FB, G+, LI]
-+ includeImagePreview: true (boolean, optional) - Whether to show the preview image. [FB, G+, LI]
++ url: http://link.test (string, required) - URL that the link is pointing to.
++ title: My link name (string, optional) - Display text for the link.
++ description: My link description (string, optional) - Description of the link. 
++ previewImageUrl: http://preview.fake/preview.jpg (string, optional) - URL of image preview.
++ includeImagePreview: true (boolean, optional) - Whether to show the preview image.
 
 ## Video (object)
-+ embedUrl: www.youtube.com/embed/ASDfjkzf (string, optional) - URL to an embeddable video. [YT]
++ embedUrl: www.youtube.com/embed/ASDfjkzf (string, optional) - URL to an embeddable video.
 + sourceUrl: www.youtube.com/ASDLJLAasd (string, optional) - URL to source video
 + videoId: ADLKJsdfsl3 (string, optional) - Video ID
 + previewImageUrl (string, optional) - Preview image URL
 
 ## Image (object)
-+ url: http://url.to.image/image.jpg (string, required) - URL to this image. [All]
++ url: http://url.to.image/image.jpg (string, required) - URL to this image.
 
 ## Media (object)
-+ links (array[Link], optional) - Any links in the post. [FB, G+, LI, IG]
-+ images (array[Image], optional) - Any images in the post. [FB, G+, LI, IG, TW]
-+ videos (array[Video], optional) - Any videos in the post. [YT]
++ links (array[Link], optional) - Any links in the post.
++ images (array[Image], optional) - Any images in the post.
++ videos (array[Video], optional) - Any videos in the post.
 
 ## Statistic (object)
 + sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
@@ -55,59 +55,59 @@ SCUM Facade API V3
 + name (string, required) - actual tag
 
 ## Position (object)
-+ latitude: 20.123 (number, required) - Latitude of this position. [TW, YT]
-+ longitude: 40.123 (number, required) - Longitude of this position. [TW, YT]
++ latitude: 20.123 (number, required) - Latitude of this position.
++ longitude: 40.123 (number, required) - Longitude of this position.
 
 ## Place (object)
 + sourceNetwork: youTube (enum[string], required) - ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
-+ resourceType: page (enum[string], required) [FB]
-+ resourceId: asdfzv (string, required) [FB]
++ resourceType: page (enum[string], required)
++ resourceId: asdfzv (string, required) 
 
 ## Location (object)
-+ position (Position, optional) - Position metadata. [TW, YT]
-+ place (Place, optional) - Place metadata. [FB]
++ position (Position, optional) - Position metadata. 
++ place (Place, optional) - Place metadata.
 
 ## Privacy (object)
 + sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
-+ scope: public (enum[string], required) - [public, directconnections, directandsecondaryconnections, private, unlisted]
++ scope: public (enum[string], required) - ['public', 'directconnections', 'directandsecondaryconnections', 'private', 'unlisted']
 + scopeIdSet (array[string], optional) - array of ids related to scope restriction
 + hidden (boolean, optional)
 
 ## InReplyTo (object)
-+ sourceNetwork: youTube (enum[string], required)
++ sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
 + objectType: post (enum[string], required) - ['post', 'comment']
 + objectId: abcd12345 (string, required) - Id of the post or comment
 
 ## Comment (object)
-+ id: jksdfZJfiewrfVCW== (string, required) - ID of this comment. [All]
++ id: jksdfZJfiewrfVCW== (string, required) - ID of this comment.
 + inReplyTo (InReplyTo, required) - defines the parent
-+ message (Message, required) - The message this comment contains. [All]
-+ author (ProfileSummary, required) - The author of this comment. [All]
-+ statistics (array[Statistic], required) - array of stats objects [All]
-+ media (Media, optional) - Any media contained within this comment. [All]
-+ privacy (Privacy, optional) - The privacy settings of this comment. [FB]
-+ currentUserRating: none (enum[string], required) - [like, dislike, none] Current user's own rating 
-+ createdDate: 1450828522869 (string, required) - Unix epoch timestamp. [All]
++ message (Message, required) - The message this comment contains.
++ author (ProfileSummary, required) - The author of this comment.
++ statistics (array[Statistic], required) - array of stats objects.
++ media (Media, optional) - Any media contained within this comment.
++ privacy (Privacy, optional) - The privacy settings of this comment.
++ currentUserRating: none (enum[string], required) - Current user's own rating ['like', 'dislike', 'none'] 
++ createdDate: 1450828522869 (string, required) - Unix epoch timestamp.
 
 ## CommentList (object)
 + comments (array[Comment], required) - actual comments
 + pagingResponse (PagingResponse, required) - paging
 
 ## Post (object)
-+ id: zxcv1234 (string, required) - ID of the post of the social network. [All]
++ id: zxcv1234 (string, required) - ID of the post of the social network.
 + sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
-+ message (Message, required) - Message of the post. [FB, G+, LI, IG, TW]
++ message (Message, required) - Message of the post.
 + author (ProfileSummary, required)
-+ statistics (array[Statistic], required) - Information about likes, shares, views, etc. for this post. [All]
-+ inReplyTo (InReplyTo, optional) - Information about the post this is replying to. [TW]
++ statistics (array[Statistic], required) - Information about likes, shares, views, etc. for this post.
++ inReplyTo (InReplyTo, optional) - Information about the post this is replying to.
 + commentList (CommentList, optional) - Comments
-+ media (Media, optional) - Media contained within this post. [FB, G+, LI, IG, TW, YT]
-+ location (Location, optional) - Location metadata about the post. [FB, TW, YT]
-+ status (Status, optional) - Status of the post [YT]
++ media (Media, optional) - Media contained within this post.
++ location (Location, optional) - Location metadata about the post.
++ status (Status, optional) - Status of the post
 + tags (array[Tag], optional) - Post tags
-+ privacy (Privacy, optional) - Privacy information about the post. [FB, LI, TW, YT]
++ privacy (Privacy, optional) - Privacy information about the post.
 + currentUserRating: like (enum[string], optional) - [like, dislike, none] Current user's own rating 
-+ createdDate: 1450828522869 (string, required) - Unix epoch timestamp. [All]
++ createdDate: 1450828522869 (string, required) - Unix epoch timestamp.
 
 ## PagingResponse (object)
 + nextPageToken: akjvzSDFijwefADSC== (string, optional) - Token used to retrieve the next page.
@@ -125,15 +125,13 @@ SCUM Facade API V3
 ## Error (object)
 
 
-## Posts Collection [/posts]
+## Posts [/posts]
 
 ### Get posts [GET /posts/{socialProfileId}{?type}{?pageSize}{?pageToken}]
 + Parameters
-    + socialProfileId (string, required) - Social profile ID of the user performing this search. [All]
+    + socialProfileId (string, required) - Social profile ID of the user performing this search.
     + type (string, required) - Type of posts to be collected and returned. Valid values are:
-    
-        * Y_MY_CHANNEL - Posts from My Channel. [YT]
-        
+        * Y_MY_CHANNEL - Posts from YouTube's My Channel. 
     + pageSize (number, optional) - number of posts per page
     + pageToken (string, optional) - Page token
         
@@ -142,10 +140,12 @@ SCUM Facade API V3
         + request: /api/2/posts/150332989?type=Y_MY_CHANNEL
         + results (PostResults, required) - Result object
         + error (Error, required) - Error object
-        
+
+## Comments [/comments]
+
 ### Get comments [GET /comments/{socialProfileId}{?objectType}{?objectId}{?pageSize}{?nextPageToken}{?moderationStatus}]
 + Parameters
-    + socialProfileId (string, required) - Social profile ID of the user performing this search. [All]
+    + socialProfileId (string, required) - Social profile ID of the user performing this search. 
     + objectType (string, required) - Type of object to get the comments on ['post','comment']
     + objectId (string, required) - Id of the object for which to get comments
     + pageSize (number, optional) - number of posts per page
@@ -154,7 +154,22 @@ SCUM Facade API V3
 
 + Response 200 (application/json)
     + Attributes
-        + request: /api/2/comments/150332989?objectType=Y_MY_CHANNEL
+        + request: /api/2/comments/150332989?objectType=post&objectId=RTHX5qDff3Q
         + results (CommentsResults, required) - Result object
         + error (Error, required) - Error object
 
+### Post comment [POST /comments/{socialProfileId}]
++ Parameters
+    + socialProfileId (string, required) - Social profile ID of the user performing this search. 
+
++ Request body (application/json)
+    + Attributes
+        + objectType: post (string, required) - Type of object to get the comments on ['post','comment']
+        + objectId: 1XFsd12 (string, required) - Id of the object for which to get comments
+        + message: test message (string, required) - Comment message to be posted
+
++ Response 200 (application/json)
+    + Attributes
+        + request: /api/2/comments/150332989
+        + results (Comment, required) - Result object
+        + error (Error, required) - Error object
