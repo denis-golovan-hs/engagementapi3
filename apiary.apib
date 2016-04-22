@@ -77,6 +77,7 @@ SCUM Facade API V3
 + sourceNetwork: youTube (enum[string], required) - source ['twitter', 'facebook', 'youTube', 'instagram', 'linkedIn', 'googlePlus']
 + objectType: post (enum[string], required) - ['post', 'comment']
 + objectId: abcd12345 (string, required) - Id of the post or comment
++ post: (Post, optional) - only set when objectType is a post
 
 ## Comment (object)
 + id: jksdfZJfiewrfVCW== (string, required) - ID of this comment.
@@ -84,6 +85,7 @@ SCUM Facade API V3
 + message (Message, required) - The message this comment contains.
 + author (ProfileSummary, required) - The author of this comment.
 + statistics (array[Statistic], required) - array of stats objects.
++ replies (array[Comment], optional) - only set when getting all comments for YT channel
 + media (Media, optional) - Any media contained within this comment.
 + privacy (Privacy, optional) - The privacy settings of this comment.
 + currentUserRating: none (enum[string], required) - Current user's own rating ['like', 'dislike', 'none'] 
