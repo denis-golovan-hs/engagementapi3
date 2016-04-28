@@ -89,6 +89,7 @@ SCUM Facade API V3
 + media (Media, optional) - Any media contained within this comment.
 + privacy (Privacy, optional) - The privacy settings of this comment.
 + currentUserRating: none (enum[string], required) - Current user's own rating ['like', 'dislike', 'none'] 
++ moderationStatus: published (enum[string], required) - Comment moderation status ['heldforreview', 'published', 'likelyspam']
 + createdDate: 1450828522869 (string, required) - Unix epoch timestamp.
 
 ## CommentList (object)
